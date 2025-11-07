@@ -186,6 +186,70 @@ int DHT11::readTemperatureHumidity(int &temperature, int &humidity)
   return 0; // Indicate success
 }
 
+
+/**
+ * Reads and returns the temperature from the DHT11 sensor.
+ * Utilizes the readRawData method to retrieve raw data from the sensor and then extracts
+ * the temperature from the data array.
+ *
+ * @return: Temperature value in Celsius. Returns DHT11::ERROR_TIMEOUT if reading times out,
+ *          or DHT11::ERROR_CHECKSUM if checksum validation fails.
+ */
+int DHT11::readTemperatureDecimal()
+{
+  byte data[5];
+  int error = readRawData(data);
+  if (error != 0)
+  {
+    return error;
+  }
+  return data[3];
+}
+
+/**
+ * Reads and returns the humidity from the DHT11 sensor.
+ * Utilizes the readRawData method to retrieve raw data from the sensor and then extracts
+ * the humidity from the data array.
+ *
+ * @return: Humidity value in percentage. Returns DHT11::ERROR_TIMEOUT if reading times out,
+ *          or DHT11::ERROR_CHECKSUM if checksum validation fails.
+ */
+int DHT11::readHumidityDecimal()
+{
+  byte data[5];
+  int error = readRawData(data);
+  if (error != 0)
+  {
+    return error;
+  }
+  return data[1];
+}
+
+/**
+ * Reads and returns the temperature and humidity from the DHT11 sensor.
+ * Utilizes the readRawData method to retrieve raw data from the sensor and then extracts
+ * both temperature and humidity from the data array.
+ *
+ * @param temperature: Reference to a variable where the temperature value will be stored.
+ * @param humidity: Reference to a variable where the humidity value will be stored.
+ * @return: An integer representing the status of the read operation.
+ *          Returns 0 if the reading is successful, DHT11::ERROR_TIMEOUT if a timeout occurs,
+ *          or DHT11::ERROR_CHECKSUM if a checksum error occurs.
+ */
+int DHT11::readTemperatureHumidityDecimal(int &temperature, int &humidity)
+{
+  byte data[5];
+  int error = readRawData(data);
+  if (error != 0)
+  {
+    return error;
+  }
+  humidity = data[1];
+  temperature = data[3];
+  return 0; // Indicate success
+}
+
+
 /**
  * Returns a human-readable error message based on the provided error code.
  * This method facilitates easier debugging and user feedback by translating
