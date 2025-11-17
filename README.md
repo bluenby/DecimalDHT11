@@ -6,6 +6,9 @@
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/dhrubasaha08/DHT11/total)
 [![DOI](https://zenodo.org/badge/647120558.svg)](https://zenodo.org/doi/10.5281/zenodo.10633700)
 
+# Notes
+All credit goes to the original author, Dhruba Saha. However, despite the resolution being 1 degree C, the DHT11 still communicates a decimal portion of the data. As such, this library aims to make that reaccesible.
+
 ## Table of Contents
 
 - [DHT11 Arduino Library](#dht11-arduino-library)
