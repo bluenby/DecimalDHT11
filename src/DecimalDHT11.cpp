@@ -1,13 +1,14 @@
 /**
- * DHT11.cpp
- * Library for reading temperature and humidity from the DHT11 sensor.
+ * DecimalDHT11.cpp
+ * Library for reading temperature and humidity from the DHT11 sensor, but with the decimal values.
  *
- * Author: Dhruba Saha
+ * Modified Author: Ruth Spilman
+ * Original Author: Dhruba Saha
  * Version: 2.1.0
  * License: MIT
  */
 
-#include "DHT11.h"
+#include "DecimalDHT11.h"
 
 /**
  * Constructor for the DHT11 class.

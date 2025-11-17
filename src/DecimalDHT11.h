@@ -1,15 +1,16 @@
 /**
- * DHT11.h
+ * DecimalDHT11.h
  * Header file for the DHT11 library, providing functionalities to interface with
  * the DHT11 temperature & humidity sensor.
  *
- * Author: Dhruba Saha
+ * Modified Author: Ruth Spilman
+ * Original Author: Dhruba Saha
  * Version: 2.1.0
  * License: MIT
  */
 
-#ifndef DHT11_h
-#define DHT11_h
+#ifndef DecimalDHT11_h
+#define DecimalDHT11_h
 
 #include "Arduino.h"
 
