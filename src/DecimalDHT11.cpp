@@ -196,7 +196,7 @@ int DHT11::readTemperatureHumidity(int &temperature, int &humidity)
  * @return: Temperature value in Celsius. Returns DHT11::ERROR_TIMEOUT if reading times out,
  *          or DHT11::ERROR_CHECKSUM if checksum validation fails.
  */
-int DHT11::readTemperatureDecimal()
+float DHT11::readTemperatureDecimal()
 {
   byte data[5];
   int error = readRawData(data);
@@ -204,7 +204,7 @@ int DHT11::readTemperatureDecimal()
   {
     return error;
   }
-  return data[3];
+  return data[2]+.1*data[3];
 }
 
 /**
@@ -215,7 +215,7 @@ int DHT11::readTemperatureDecimal()
  * @return: Humidity value in percentage. Returns DHT11::ERROR_TIMEOUT if reading times out,
  *          or DHT11::ERROR_CHECKSUM if checksum validation fails.
  */
-int DHT11::readHumidityDecimal()
+float DHT11::readHumidityDecimal()
 {
   byte data[5];
   int error = readRawData(data);
@@ -223,7 +223,7 @@ int DHT11::readHumidityDecimal()
   {
     return error;
   }
-  return data[1];
+  return data[0] + .1*data[1];
 }
 
 /**
@@ -237,7 +237,7 @@ int DHT11::readHumidityDecimal()
  *          Returns 0 if the reading is successful, DHT11::ERROR_TIMEOUT if a timeout occurs,
  *          or DHT11::ERROR_CHECKSUM if a checksum error occurs.
  */
-int DHT11::readTemperatureHumidityDecimal(int &temperature, int &humidity)
+int DHT11::readTemperatureHumidityDecimal(float &temperature, float &humidity)
 {
   byte data[5];
   int error = readRawData(data);
@@ -245,8 +245,8 @@ int DHT11::readTemperatureHumidityDecimal(int &temperature, int &humidity)
   {
     return error;
   }
-  humidity = data[1];
-  temperature = data[3];
+  humidity = data[0]+.1*data[1];
+  temperature = data[2]+.1*data[3];
   return 0; // Indicate success
 }
 
